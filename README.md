@@ -2,11 +2,24 @@
 
 Start application and arrange windows automatically.
 
-## Quickstart
+## Dependencies
+
+### Python 3
+Install dependencies:
+
+    pip3 install --requirement pip-requires
+
+### Python 2
 
 Install dependencies:
 
-    pip -E virtualenv install --requirement pip-requires
+    pip2 install --requirement pip-requires
+
+Get Xlib from https://pypi.python.org/pypi/python-xlib/0.12 and install:
+
+    python2 setup.py install
+
+## Quick start
 
 Copy and edit sample configuration file:
 
@@ -14,6 +27,6 @@ Copy and edit sample configuration file:
     cp sample.conf ~/.arrange/default.conf
     $EDITOR ~/.arrange/default.conf
 
-Run:
+And run:
 
-    ./virtualenv/bin/python arrange.py
+    ./arrange.py

@@ -1,11 +1,21 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 from ewmh import EWMH
-import configparser
 import logging
 import os.path
 import subprocess
 import sys
 import time
+
+try:
+	import configparser
+except ImportError:
+	import ConfigParser as configparser
+
+try:
+	from subprocess import DEVNULL
+except ImportError:
+	DEVNULL = open(os.path.devnull, 'w')
+
 
 CONFIG_DIR = '~/.arrange'
 DEFAULT_CONFIG = '%s/default.conf' % CONFIG_DIR
@@ -79,7 +89,7 @@ if __name__ == '__main__':
         logger.debug('Starting "%s" with "%s"', application, command)
         pid = subprocess.Popen(
             [os.path.expanduser(command)],
-            stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).pid
+            stdin=DEVNULL, stdout=DEVNULL, stderr=DEVNULL).pid
         logger.debug('Started "%s", PID: %s', application, pid)
         started[application] = pid
 
